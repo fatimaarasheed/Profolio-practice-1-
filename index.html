@@ -617,72 +617,100 @@
   <!-- EmailJS Library -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-  <!-- JavaScript Code -->
-  <script>
-    (function() {
-      // Initialize EmailJS with your Public Key
-      emailjs.init("EhggTKJXnfJHCwU0G");
-    })();
 
-    document.addEventListener("DOMContentLoaded", function () {
-      // 1. Email Sending Logic
-      const contactForm = document.getElementById('contact-form');
-      const submitBtn = document.getElementById('submit-btn');
-      const statusMsg = document.getElementById('status-msg');
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-      if (contactForm) {
-        contactForm.addEventListener('submit', function (event) {
-          event.preventDefault();
+<!-- EmailJS CDN Library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-          submitBtn.innerText = 'Sending...';
-          submitBtn.disabled = true;
+<script>
+  (function() {
+    // Aap ki Public Key
+    emailjs.init("EhggTKJXnfJHCwU0G");
+  })();
 
-          const templateParams = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-          };
+  document.addEventListener("DOMContentLoaded", function () {
+    
+    // 1. Scroll Observer (Fade-In Animation Fix)
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const appearOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
 
-          // Service ID: service_dsrmi3c
-          emailjs.send("service_dsrmi3c", "YOUR_TEMPLATE_ID", templateParams)
-            .then(function () {
-              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-              submitBtn.disabled = false;
-              statusMsg.style.color = '#10b981';
-              statusMsg.innerText = 'Message sent successfully!';
-              contactForm.reset();
-            }, function (error) {
-              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-              submitBtn.disabled = false;
-              statusMsg.style.color = '#ef4444';
-              statusMsg.innerText = 'Failed to send message: ' + JSON.stringify(error);
-            });
-        });
-      }
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('visible');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
 
-      // 2. Active Nav Link on Scroll & Smooth Scroll
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const sections = document.querySelectorAll('section');
+    fadeElements.forEach(element => {
+      appearOnScroll.observe(element);
+    });
 
-      window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (pageYOffset >= (sectionTop - 150)) {
-            current = section.getAttribute('id');
-          }
-        });
+    // 2. EmailJS Form Submission Logic
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusMsg = document.getElementById('status-msg');
 
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-          }
-        });
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        submitBtn.innerText = 'Sending...';
+        submitBtn.disabled = true;
+
+        const templateParams = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          message: document.getElementById('message').value
+        };
+
+        // Service ID aur sahi Template ID
+        emailjs.send("service_dsrmi3c", "template_k6x7hxq", templateParams)
+          .then(function () {
+            submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+            submitBtn.disabled = false;
+            statusMsg.style.color = '#10b981';
+            statusMsg.innerText = 'Message sent successfully!';
+            contactForm.reset();
+          }, function (error) {
+            submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+            submitBtn.disabled = false;
+            statusMsg.style.color = '#ef4444';
+            statusMsg.innerText = 'Failed to send: ' + (error.text || JSON.stringify(error));
+          });
+      });
+    }
+
+    // 3. Active Nav Link on Scroll
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= (sectionTop - 150)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
       });
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
