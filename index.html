@@ -47,7 +47,7 @@
 
         <p>
           Data Science student at PAF-IAST with a 3.73 CGPA and 2x Dean's List honors.
-          Passionate about C++ software architecture, relational database management,
+          Passionately exploring C++ software architecture, relational database management,
           and responsive front-end web engineering.
         </p>
 
@@ -533,23 +533,12 @@
 
 
         <!-- =========================
-             FORMSPREE CONTACT FORM
+             CONTACT FORM WITH EMAILJS
         ========================== -->
 
         <div class="form-box">
 
-          <form
-            action="https://formspree.io/f/xaewgpew"
-            method="POST"
-          >
-
-            <!-- Subject of the email -->
-            <input
-              type="hidden"
-              name="_subject"
-              value="New Portfolio Contact Message"
-            >
-
+          <form id="contact-form">
 
             <!-- Name -->
             <div class="form-group">
@@ -609,16 +598,13 @@
 
 
             <!-- Submit Button -->
-            <button
-              type="submit"
-              class="btn btn-primary"
-              style="width: 100%; justify-content: center; border: none; cursor: pointer;"
-            >
-              Send Message
-              <i class="fa-solid fa-paper-plane"></i>
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">
+              Send Message <i class="fa-solid fa-paper-plane"></i>
             </button>
 
           </form>
+
+          <div id="status-msg" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
 
         </div>
 
@@ -626,115 +612,77 @@
 
     </section>
 
-
-    <!-- Footer -->
-    <footer>
-
-      <p>
-        © 2026 Fatima Rasheed • Abbottabad, Pakistan
-      </p>
-
-    </footer>
-
   </div>
 
+  <!-- EmailJS Library -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+  <!-- JavaScript Code -->
   <script>
+    (function() {
+      // Initialize EmailJS with your Public Key
+      emailjs.init("EhggTKJXnfJHCwU0G");
+    })();
 
-    /* =========================
-       ACTIVE NAVIGATION ON SCROLL
-    ========================= */
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Email Sending Logic
+      const contactForm = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('status-msg');
 
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-links a");
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+          event.preventDefault();
 
+          submitBtn.innerText = 'Sending...';
+          submitBtn.disabled = true;
 
-    function updateActiveNav() {
+          const templateParams = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+          };
 
-      let currentSection = "home";
-
-      const scrollPosition = window.scrollY + 180;
-
-
-      sections.forEach(section => {
-
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-
-          currentSection = section.getAttribute("id");
-
-        }
-
-      });
-
-
-      navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-
-        if (
-          link.getAttribute("href") === "#" + currentSection
-        ) {
-
-          link.classList.add("active");
-
-        }
-
-      });
-
-    }
-
-
-    window.addEventListener("scroll", updateActiveNav);
-
-    window.addEventListener("load", updateActiveNav);
-
-
-
-    /* =========================
-       SCROLL REVEAL ANIMATION
-    ========================= */
-
-    const observer = new IntersectionObserver(
-
-      (entries) => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-          }
-
+          // Service ID: service_dsrmi3c
+          emailjs.send("service_dsrmi3c", "YOUR_TEMPLATE_ID", templateParams)
+            .then(function () {
+              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+              submitBtn.disabled = false;
+              statusMsg.style.color = '#10b981';
+              statusMsg.innerText = 'Message sent successfully!';
+              contactForm.reset();
+            }, function (error) {
+              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+              submitBtn.disabled = false;
+              statusMsg.style.color = '#ef4444';
+              statusMsg.innerText = 'Failed to send message: ' + JSON.stringify(error);
+            });
         });
-
-      },
-
-      {
-        threshold: 0.1
       }
 
-    );
+      // 2. Active Nav Link on Scroll & Smooth Scroll
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const sections = document.querySelectorAll('section');
 
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= (sectionTop - 150)) {
+            current = section.getAttribute('id');
+          }
+        });
 
-    document
-      .querySelectorAll(".fade-in")
-      .forEach(section => {
-
-        observer.observe(section);
-
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
       });
-
+    });
   </script>
-
 
 </body>
 </html>
