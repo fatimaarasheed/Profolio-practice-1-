@@ -7,6 +7,35 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./style.css">
+
+  <style>
+    /* Ensure equal card heights and align buttons at the bottom of every block */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .project-card-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 
 <body>
@@ -73,13 +102,6 @@
           </a>
 
         </div>
-      </div>
-
-
-      <div class="hero-avatar">
-        <img src="images/me.jpg"
-             alt="Fatima Rasheed"
-             class="avatar-img">
       </div>
 
     </section>
@@ -324,10 +346,65 @@
 
       <div class="projects-grid">
 
+        <!-- Scientific Calculator Web App -->
         <div class="project-card">
+          <div class="project-card-content">
+            <div class="project-title">
+              Scientific Calculator Web App
+            </div>
 
-          <div>
+            <div class="project-desc">
+              Developed an advanced smart scientific calculator application featuring mathematical calculation loops, dynamic UI interaction, and responsive light-themed styling.
+            </div>
 
+            <div class="tech-tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Vercel Deploy</span>
+            </div>
+          </div>
+
+          <div class="project-card-actions">
+            <a href="https://github.com/fatimaarasheed/Scientific-Calculator."
+               target="_blank"
+               class="link-btn">
+              <i class="fa-brands fa-github"></i>
+              Repository
+            </a>
+
+            <a href="https://scientific-calculator-fatimaa.vercel.app"
+               target="_blank"
+               class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Paramedicine & Emergency System -->
+        <div class="project-card">
+          <div class="project-card-content">
+            <div class="project-title">
+              Paramedicine & Emergency System
+            </div>
+
+            <div class="project-desc">
+              Designed and developed a comprehensive paramedicine and emergency response workflow application. 
+              Integrated patient triage tracking, emergency dispatch logging, and structured data handling.
+            </div>
+
+            <div class="tech-tags">
+              <span class="tag">System Architecture</span>
+              <span class="tag">Database Design</span>
+              <span class="tag">Workflow Logic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keefer Law Firm Web App -->
+        <div class="project-card">
+          <div class="project-card-content">
             <div class="project-title">
               Keefer Law Firm Web App
             </div>
@@ -342,11 +419,9 @@
               <span class="tag">CSS3</span>
               <span class="tag">Responsive UI</span>
             </div>
-
           </div>
 
-          <div style="display: flex; gap: 10px;">
-
+          <div class="project-card-actions">
             <a href="https://github.com/fatimaarasheed/keefer-law-firm"
                target="_blank"
                class="link-btn">
@@ -354,15 +429,19 @@
               Repository
             </a>
 
+            <a href="https://github.com/fatimaarasheed/keefer-law-firm"
+               target="_blank"
+               class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
           </div>
-
         </div>
 
 
+        <!-- Portfolio Practice Site -->
         <div class="project-card">
-
-          <div>
-
+          <div class="project-card-content">
             <div class="project-title">
               Portfolio Practice Site
             </div>
@@ -377,11 +456,9 @@
               <span class="tag">CSS Flexbox</span>
               <span class="tag">Vercel Deploy</span>
             </div>
-
           </div>
 
-          <div style="display: flex; gap: 10px;">
-
+          <div class="project-card-actions">
             <a href="https://github.com/fatimaarasheed/Protfolio-practice"
                target="_blank"
                class="link-btn">
@@ -389,15 +466,19 @@
               Repository
             </a>
 
+            <a href="https://github.com/fatimaarasheed/Protfolio-practice"
+               target="_blank"
+               class="link-btn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
           </div>
-
         </div>
 
 
+        <!-- 2D Snake Game -->
         <div class="project-card">
-
-          <div>
-
+          <div class="project-card-content">
             <div class="project-title">
               2D Snake Game
             </div>
@@ -413,16 +494,13 @@
               <span class="tag">Raylib</span>
               <span class="tag">OOP</span>
             </div>
-
           </div>
-
         </div>
 
 
+        <!-- CR Online Voting System -->
         <div class="project-card">
-
-          <div>
-
+          <div class="project-card-content">
             <div class="project-title">
               CR Online Voting System
             </div>
@@ -437,16 +515,13 @@
               <span class="tag">C++ Console</span>
               <span class="tag">File Streams</span>
             </div>
-
           </div>
-
         </div>
 
 
+        <!-- Hospital Information System -->
         <div class="project-card">
-
-          <div>
-
+          <div class="project-card-content">
             <div class="project-title">
               Hospital Information System
             </div>
@@ -461,9 +536,7 @@
               <span class="tag">MS Access</span>
               <span class="tag">Relational DB</span>
             </div>
-
           </div>
-
         </div>
 
       </div>
@@ -532,15 +605,11 @@
         </div>
 
 
-        <!-- =========================
-             CONTACT FORM WITH EMAILJS
-        ========================== -->
-
+        <!-- CONTACT FORM WITH EMAILJS -->
         <div class="form-box">
 
           <form id="contact-form">
 
-            <!-- Name -->
             <div class="form-group">
 
               <label for="name">
@@ -559,7 +628,6 @@
             </div>
 
 
-            <!-- Email -->
             <div class="form-group">
 
               <label for="email">
@@ -578,7 +646,6 @@
             </div>
 
 
-            <!-- Message -->
             <div class="form-group">
 
               <label for="message">
@@ -597,7 +664,6 @@
             </div>
 
 
-            <!-- Submit Button -->
             <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">
               Send Message <i class="fa-solid fa-paper-plane"></i>
             </button>
@@ -614,103 +680,102 @@
 
   </div>
 
-  <!-- EmailJS Library -->
+
+  <!-- EmailJS CDN Library -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+  <script>
+    (function() {
+      emailjs.init("EhggTKJXnfJHCwU0G");
+    })();
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-<!-- EmailJS CDN Library -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+      // 1. Scroll Observer
+      const fadeElements = document.querySelectorAll('.fade-in');
 
-<script>
-  (function() {
-    // Aap ki Public Key
-    emailjs.init("EhggTKJXnfJHCwU0G");
-  })();
+      const appearOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      };
 
-  document.addEventListener("DOMContentLoaded", function () {
-    
-    // 1. Scroll Observer (Fade-In Animation Fix)
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const appearOptions = {
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
-    };
+      const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.classList.add('visible');
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      }, appearOptions);
 
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          return;
-        } else {
-          entry.target.classList.add('visible');
-          appearOnScroll.unobserve(entry.target);
-        }
+      fadeElements.forEach(element => {
+        appearOnScroll.observe(element);
       });
-    }, appearOptions);
 
-    fadeElements.forEach(element => {
-      appearOnScroll.observe(element);
+
+      // 2. EmailJS Form Submission Logic
+      const contactForm = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('status-msg');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          submitBtn.innerText = 'Sending...';
+          submitBtn.disabled = true;
+
+          const templateParams = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+          };
+
+          emailjs.send("service_dsrmi3c", "template_k6x7hxq", templateParams)
+            .then(function () {
+              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+              submitBtn.disabled = false;
+              statusMsg.style.color = '#10b981';
+              statusMsg.innerText = 'Message sent successfully!';
+              contactForm.reset();
+            }, function (error) {
+              submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+              submitBtn.disabled = false;
+              statusMsg.style.color = '#ef4444';
+              statusMsg.innerText = 'Failed to send: ' + (error.text || JSON.stringify(error));
+            });
+        });
+      }
+
+
+      // 3. Active Navigation Link on Scroll
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const sections = document.querySelectorAll('section');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+
+          if (window.pageYOffset >= (sectionTop - 150)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+
     });
-
-    // 2. EmailJS Form Submission Logic
-    const contactForm = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const statusMsg = document.getElementById('status-msg');
-
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        submitBtn.innerText = 'Sending...';
-        submitBtn.disabled = true;
-
-        const templateParams = {
-          name: document.getElementById('name').value,
-          email: document.getElementById('email').value,
-          message: document.getElementById('message').value
-        };
-
-        // Service ID aur sahi Template ID
-        emailjs.send("service_dsrmi3c", "template_k6x7hxq", templateParams)
-          .then(function () {
-            submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-            submitBtn.disabled = false;
-            statusMsg.style.color = '#10b981';
-            statusMsg.innerText = 'Message sent successfully!';
-            contactForm.reset();
-          }, function (error) {
-            submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-            submitBtn.disabled = false;
-            statusMsg.style.color = '#ef4444';
-            statusMsg.innerText = 'Failed to send: ' + (error.text || JSON.stringify(error));
-          });
-      });
-    }
-
-    // 3. Active Nav Link on Scroll
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('section');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= (sectionTop - 150)) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-  });
-</script>
+  </script>
 
 </body>
 </html>
